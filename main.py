@@ -3,7 +3,6 @@ import random
 import os
 # from keep_alive import keep_alive
 from Midi import Midi
-from midi2audio import FluidSynth
 
 client = discord.Client()
 
@@ -68,9 +67,7 @@ async def on_message(message):
         # output to file named test
         mid.output_mid("test")
         # midi to wav
-        fs = FluidSynth()
-        fs.midi_to_audio('test.mid', 'output.wav')
-        await channel.send('Calling Terry Gannon 📞...')
+        await channel.send(file=discord.File('test.mid'))
     except:
         await channel.send('Incorrect use of !midi, to use !midi, follow with a space then the bpm and then note duration pairs all separate by spaces')
 
